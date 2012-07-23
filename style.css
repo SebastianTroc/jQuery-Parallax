@@ -128,15 +128,9 @@ h2{
 	overflow: auto;
 	width: 980px;
 }
-#third .story {
-	height: 700px;
-}
 
 .story .float-left, .story .float-right{
 	padding: 100px 0 0 0;
 	position: relative;
-	width: 300px;	
-}
-.firstElem, .secondElem, .thirdElem{
-	position: relative;
+	width: 350px;	
 }
