@@ -19,8 +19,8 @@ http://www.gnu.org/licenses/gpl.html
 		windowHeight = $window.height();
 	});
 
-	$.fn.parallax = function(xpos, speedFactor, outerHeight) {
-		var $this = $(this);
+	$.fn.parallax = function(xpos, speedFactor, outerHeight, staticImage) {
+        var $this = $(this);
 		var getHeight;
 		var firstTop;
 		var paddingTop = 0;
@@ -44,6 +44,7 @@ http://www.gnu.org/licenses/gpl.html
 		if (arguments.length < 1 || xpos === null) xpos = "50%";
 		if (arguments.length < 2 || speedFactor === null) speedFactor = 0.1;
 		if (arguments.length < 3 || outerHeight === null) outerHeight = true;
+		if (arguments.length < 4 || staticImage === null) staticImage = false;
 		
 		// function to be called whenever the window is scrolled or resized
 		function update(){
@@ -59,7 +60,12 @@ http://www.gnu.org/licenses/gpl.html
 					return;
 				}
 
-				$this.css('backgroundPosition', xpos + " " + Math.round((firstTop - pos) * speedFactor) + "px");
+                if (staticImage == true) {
+                  $this.css('top', Math.round((firstTop - pos) * speedFactor) - 100 + "px");
+                } else {
+                  $this.css('backgroundPosition', xpos + " " + Math.round((firstTop - pos) * speedFactor) + "px");
+                }
+
 			});
 		}		
 
